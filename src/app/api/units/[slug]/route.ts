@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export async function GET(
-  _request: Request,
-  { params }: { params: { slug: string } }
-) {
+type Context = { params: Promise<{ slug: string }> };
+
+export async function GET(_request: Request, context: Context) {
+  const { slug } = await context.params;
   const unit = await prisma.unit.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: { development: true },
   });
   if (!unit) {
@@ -15,14 +15,12 @@ export async function GET(
   return NextResponse.json(unit);
 }
 
-export async function PUT(
-  request: Request,
-  { params }: { params: { slug: string } }
-) {
+export async function PUT(request: Request, context: Context) {
+  const { slug } = await context.params;
   try {
     const body = await request.json();
     const unit = await prisma.unit.update({
-      where: { slug: params.slug },
+      where: { slug },
       data: {
         slug: body.slug,
         title: body.title,
@@ -48,12 +46,10 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  _request: Request,
-  { params }: { params: { slug: string } }
-) {
+export async function DELETE(_request: Request, context: Context) {
+  const { slug } = await context.params;
   try {
-    await prisma.unit.delete({ where: { slug: params.slug } });
+    await prisma.unit.delete({ where: { slug } });
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json(
