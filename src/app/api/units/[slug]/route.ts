@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 type Context = { params: Promise<{ slug: string }> };
 
-export async function GET(_request: Request, context: Context) {
+export async function GET(_request: NextRequest, context: Context) {
   const { slug } = await context.params;
   const unit = await prisma.unit.findUnique({
     where: { slug },
@@ -15,7 +15,7 @@ export async function GET(_request: Request, context: Context) {
   return NextResponse.json(unit);
 }
 
-export async function PUT(request: Request, context: Context) {
+export async function PUT(request: NextRequest, context: Context) {
   const { slug } = await context.params;
   try {
     const body = await request.json();
@@ -46,7 +46,7 @@ export async function PUT(request: Request, context: Context) {
   }
 }
 
-export async function DELETE(_request: Request, context: Context) {
+export async function DELETE(_request: NextRequest, context: Context) {
   const { slug } = await context.params;
   try {
     await prisma.unit.delete({ where: { slug } });
