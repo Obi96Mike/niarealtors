@@ -1,13 +1,9 @@
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
 import { NewUnitForm } from "./new-unit-form";
+import { developments } from "@/data/developments";
 
 export default async function NewUnitPage() {
-  const developments = await prisma.development.findMany({
-    orderBy: { name: "asc" },
-    select: { id: true, name: true },
-  });
-
+  const devOptions = developments.map((dev) => ({ id: dev.id, name: dev.name }));
   return (
     <div className="section-shell py-10 space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -22,7 +18,7 @@ export default async function NewUnitPage() {
         </Link>
       </div>
       <div className="rounded-xl border border-border bg-white p-6 shadow-sm">
-        <NewUnitForm developments={developments} />
+        <NewUnitForm developments={devOptions} />
       </div>
     </div>
   );

@@ -1,12 +1,10 @@
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
 import { DeleteDevelopmentButton } from "./delete-button";
+import { developments } from "@/data/developments";
 
 export default async function AdminDevelopmentsPage() {
-  const developments = await prisma.development.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  const list = developments;
 
   return (
     <div className="section-shell py-10 space-y-6">
@@ -36,19 +34,19 @@ export default async function AdminDevelopmentsPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
-            {developments.length === 0 ? (
+            {list.length === 0 ? (
               <tr>
                 <td className="px-4 py-6 text-muted-foreground" colSpan={7}>
                   No developments yet. Create your first one.
                 </td>
               </tr>
             ) : (
-              developments.map((dev) => (
+              list.map((dev) => (
                 <tr key={dev.id} className="hover:bg-background-neutral/60">
                   <td className="px-4 py-3 font-medium text-text-dark">{dev.name}</td>
                   <td className="px-4 py-3 text-muted-foreground">{dev.slug}</td>
                   <td className="px-4 py-3 text-muted-foreground">
-                    {dev.location}, {dev.region}
+                    {dev.locationArea}, {dev.locationRegion}
                   </td>
                   <td className="px-4 py-3">
                     <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">
@@ -56,11 +54,9 @@ export default async function AdminDevelopmentsPage() {
                     </span>
                   </td>
                   <td className="px-4 py-3 text-muted-foreground">
-                    {dev.currency} {dev.startingPrice.toLocaleString()}
+                    {dev.currency} {dev.priceFrom.toLocaleString()}
                   </td>
-                  <td className="px-4 py-3 text-muted-foreground">
-                    {new Date(dev.createdAt).toLocaleDateString()}
-                  </td>
+                  <td className="px-4 py-3 text-muted-foreground">—</td>
                   <td className="px-4 py-3 text-sm">
                     <div className="flex flex-wrap gap-2">
                       <Link

@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface NewUnitFormProps {
-  developments: { id: number; name: string }[];
+  developments: { id: string | number; name: string }[];
 }
 
 const availabilityOptions = ["Available", "Reserved", "Sold"];
@@ -52,7 +52,7 @@ export function NewUnitForm({ developments }: NewUnitFormProps) {
           sizeSqm: form.sizeSqm ? Number(form.sizeSqm) : undefined,
           floorNumber: form.floorNumber ? Number(form.floorNumber) : undefined,
           price: Number(form.price),
-          developmentId: Number(form.developmentId),
+          developmentId: form.developmentId,
         }),
       });
       if (!res.ok) {

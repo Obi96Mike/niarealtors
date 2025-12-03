@@ -141,3 +141,9 @@ export const developments: Development[] = [
     ],
   },
 ];
+
+export const getDevelopmentById = (id: string) =>
+  developments.find((dev) => dev.id === id);
+
+export const getDevelopmentBySlug = (slug: string) =>
+  developments.find((dev) => dev.slug === slug);

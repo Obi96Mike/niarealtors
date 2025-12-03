@@ -1,26 +1,25 @@
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
 import { DeleteUnitButton } from "./delete-button";
+import { units } from "@/data/units";
+import { developments } from "@/data/developments";
 
 interface UnitsPageProps {
   searchParams?: { developmentId?: string };
 }
 
 export default async function AdminUnitsPage({ searchParams }: UnitsPageProps) {
-  const developmentId = searchParams?.developmentId
-    ? Number(searchParams.developmentId)
-    : undefined;
+  const developmentId = searchParams?.developmentId;
 
-  const units = await prisma.unit.findMany({
-    where: developmentId ? { developmentId } : undefined,
-    orderBy: { createdAt: "desc" },
-    include: { development: true },
-  });
+  const filteredUnits = developmentId
+    ? units.filter(
+        (unit) =>
+          String(unit.developmentId) === developmentId ||
+          unit.slug.includes(developmentId)
+      )
+    : units;
 
-  const developments = await prisma.development.findMany({
-    orderBy: { name: "asc" },
-  });
+  const devMap = new Map(developments.map((d) => [String(d.id), d.name]));
 
   return (
     <div className="section-shell py-10 space-y-6">
@@ -49,7 +48,7 @@ export default async function AdminUnitsPage({ searchParams }: UnitsPageProps) {
           <Link
             key={dev.id}
             href={`/admin/units?developmentId=${dev.id}`}
-            className={`rounded-full border px-3 py-1 ${developmentId === dev.id ? "border-brand text-brand" : "border-border text-muted-foreground"}`}
+            className={`rounded-full border px-3 py-1 ${developmentId === String(dev.id) ? "border-brand text-brand" : "border-border text-muted-foreground"}`}
           >
             {dev.name}
           </Link>
@@ -70,14 +69,14 @@ export default async function AdminUnitsPage({ searchParams }: UnitsPageProps) {
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
-            {units.length === 0 ? (
+            {filteredUnits.length === 0 ? (
               <tr>
                 <td className="px-4 py-6 text-muted-foreground" colSpan={6}>
                   No units found.
                 </td>
               </tr>
             ) : (
-              units.map((unit) => (
+              filteredUnits.map((unit) => (
                 <tr key={unit.id} className="hover:bg-background-neutral/60">
                   <td className="px-4 py-3 font-medium text-text-dark">{unit.title}</td>
                   <td className="px-4 py-3 text-muted-foreground">{unit.slug}</td>
@@ -91,7 +90,7 @@ export default async function AdminUnitsPage({ searchParams }: UnitsPageProps) {
                     {unit.currency} {unit.price.toLocaleString()}
                   </td>
                   <td className="px-4 py-3 text-muted-foreground">
-                    {unit.development?.name || "—"}
+                    {devMap.get(String(unit.developmentId)) || "—"}
                   </td>
                   <td className="px-4 py-3 text-sm">
                     <div className="flex flex-wrap gap-2">
