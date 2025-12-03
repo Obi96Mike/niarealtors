@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { residentialRentals } from "@/data/residentialRentals";
 
-export async function GET(
-  _request: Request,
-  { params }: { params: { slug: string } }
-) {
-  const rental = residentialRentals.find((item) => item.slug === params.slug);
+type Context = { params: Promise<{ slug: string }> };
+
+export async function GET(_request: Request, context: Context) {
+  const { slug } = await context.params;
+  const rental = residentialRentals.find((item) => item.slug === slug);
   if (!rental) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
