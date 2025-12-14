@@ -100,9 +100,9 @@ export default function SiteFooter() {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 hover:text-white"
+                className="flex items-center gap-2 text-white hover:text-white"
               >
-                <Icon className="h-4 w-4" />
+                <Icon className="h-4 w-4 text-white" />
                 {label}
               </a>
             ))}
