@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Facebook, Instagram, Twitter, Search as SearchIcon } from "lucide-react";
+import { Facebook, Instagram, Twitter, Search as SearchIcon, Linkedin, Music2 } from "lucide-react";
 import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,7 @@ export default function SiteHeader() {
         <MainNav />
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/profile.php?id=61578951969809&rdid=Ncb82fbVg2pO9Ndn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19mWADvSJL%2F#"
             target="_blank"
             rel="noreferrer"
             className="text-text-dark hover:text-brand"
@@ -42,7 +42,7 @@ export default function SiteHeader() {
             <Facebook className="h-5 w-5" />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/niahavens"
             target="_blank"
             rel="noreferrer"
             className="text-text-dark hover:text-brand"
@@ -51,13 +51,31 @@ export default function SiteHeader() {
             <Instagram className="h-5 w-5" />
           </a>
           <a
-            href="https://x.com"
+            href="https://x.com/NiaRealtors"
             target="_blank"
             rel="noreferrer"
             className="text-text-dark hover:text-brand"
             aria-label="X"
           >
             <Twitter className="h-5 w-5" />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/nia-realtors/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-text-dark hover:text-brand"
+            aria-label="LinkedIn"
+          >
+            <Linkedin className="h-5 w-5" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@niahavens"
+            target="_blank"
+            rel="noreferrer"
+            className="text-text-dark hover:text-brand"
+            aria-label="TikTok"
+          >
+            <Music2 className="h-5 w-5" />
           </a>
           <Button
             variant="outline"

@@ -2,9 +2,9 @@ import { TeamMember } from "@/types/realEstate";
 
 export const teamMembers: TeamMember[] = [
   {
-    id: "team-nia",
-    slug: "nia-wanjiku",
-    name: "Nia Wanjiku",
+    id: "team-pyume",
+    slug: "pyume-wambua",
+    name: "Pyume Wambua",
     role: "Founder & Lead Broker",
     shortBio:
       "Seasoned broker focused on lifestyle-led developments and prime rentals across Nairobi.",
@@ -17,9 +17,9 @@ export const teamMembers: TeamMember[] = [
     quote: "Building dreams, creating value—one conversation at a time.",
   },
   {
-    id: "team-mike",
-    slug: "mike-odhiambo",
-    name: "Mike Odhiambo",
+    id: "team-mark",
+    slug: "mark-nzau",
+    name: "Mark Nzau",
     role: "Head of Investments",
     shortBio:
       "Commercial strategist specializing in income-generating assets and structured deals.",
@@ -32,9 +32,9 @@ export const teamMembers: TeamMember[] = [
     quote: "Smart capital needs clear information and decisive execution.",
   },
   {
-    id: "team-leah",
-    slug: "leah-nduta",
-    name: "Leah Nduta",
+    id: "team-simon",
+    slug: "simon-waigwa",
+    name: "Simon Waigwa",
     role: "Client Experience Lead",
     shortBio:
       "Creates smooth journeys for tenants and buyers—from first inquiry to key handover.",

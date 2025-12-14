@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { X } from "lucide-react";
+import { countryCallingCodes } from "@/data/countryCodes";
 
 interface EnquiryModalProps {
   isOpen: boolean;
@@ -18,6 +19,10 @@ export function EnquiryModal({ isOpen, onClose, propertyName }: EnquiryModalProp
     subject: propertyName || "",
     message: "",
   });
+  const sortedCountryCodes = useMemo(
+    () => [...countryCallingCodes].sort((a, b) => a.name.localeCompare(b.name)),
+    [],
+  );
 
   if (!isOpen) return null;
 
@@ -87,10 +92,11 @@ export function EnquiryModal({ isOpen, onClose, propertyName }: EnquiryModalProp
                 onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
                 className="rounded border border-border bg-input-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
               >
-                <option value="+254">+254 (Kenya)</option>
-                <option value="+255">+255 (Tanzania)</option>
-                <option value="+256">+256 (Uganda)</option>
-                <option value="+250">+250 (Rwanda)</option>
+                {sortedCountryCodes.map(({ code, name, dialCode }) => (
+                  <option key={`${code}-${dialCode}`} value={dialCode}>
+                    {name} ({dialCode})
+                  </option>
+                ))}
               </select>
               <input
                 required

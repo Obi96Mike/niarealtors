@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, MessageCircle, Twitter, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MessageCircle, Music2, Twitter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -14,12 +14,12 @@ const quickLinks = [
 ];
 
 const socials = [
-  { label: "Facebook", icon: Facebook, href: "https://facebook.com" },
-  { label: "Instagram", icon: Instagram, href: "https://instagram.com" },
-  { label: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-  { label: "TikTok", icon: Youtube, href: "https://www.tiktok.com" },
+  { label: "Facebook", icon: Facebook, href: "https://www.facebook.com/profile.php?id=61578951969809&rdid=Ncb82fbVg2pO9Ndn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19mWADvSJL%2F#" },
+  { label: "Instagram", icon: Instagram, href: "https://www.instagram.com/niahavens" },
+  { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/nia-realtors/" },
+  { label: "TikTok", icon: Music2, href: "https://www.tiktok.com/@niahavens" },
   { label: "WhatsApp", icon: MessageCircle, href: "https://wa.me/254708085761" },
-  { label: "X", icon: Twitter, href: "https://x.com" },
+  { label: "X", icon: Twitter, href: "https://x.com/NiaRealtors" },
 ];
 
 export default function SiteFooter() {

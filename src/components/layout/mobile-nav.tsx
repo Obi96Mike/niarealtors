@@ -26,7 +26,7 @@ export function MobileNav() {
       <SheetContent side="left" className="w-72">
         <SheetHeader>
           <SheetTitle className="text-xl font-semibold text-brand">
-            Nia Realtors
+            Tabor Realtors
           </SheetTitle>
         </SheetHeader>
         <div className="mt-6 flex flex-col gap-4">

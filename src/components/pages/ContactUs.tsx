@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { countryCallingCodes } from "@/data/countryCodes";
 
 interface ContactUsProps {
   onNavigate: (page: string, id?: string) => void;
 }
 
 export function ContactUs({ onNavigate }: ContactUsProps) {
+  const sortedCountryCodes = useMemo(
+    () => [...countryCallingCodes].sort((a, b) => a.name.localeCompare(b.name)),
+    [],
+  );
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -89,10 +94,11 @@ export function ContactUs({ onNavigate }: ContactUsProps) {
                     onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
                     className="rounded border border-border bg-input-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
                   >
-                    <option value="+254">+254 (Kenya)</option>
-                    <option value="+255">+255 (Tanzania)</option>
-                    <option value="+256">+256 (Uganda)</option>
-                    <option value="+250">+250 (Rwanda)</option>
+                    {sortedCountryCodes.map(({ code, name, dialCode }) => (
+                      <option key={`${code}-${dialCode}`} value={dialCode}>
+                        {name} ({dialCode})
+                      </option>
+                    ))}
                   </select>
                   <input
                     id="phone"
@@ -153,6 +159,8 @@ export function ContactUs({ onNavigate }: ContactUsProps) {
                     Office Address
                   </h3>
                   <p className="text-muted-foreground">
+                    ABC Place, 4th Floor,  
+                    < br />
                     Westlands, Nairobi
                     <br />
                     Kenya
@@ -168,8 +176,8 @@ export function ContactUs({ onNavigate }: ContactUsProps) {
                   <h3 className="mb-1" style={{ color: "#0D402D" }}>
                     Phone
                   </h3>
-                  <a href="tel:+254700000000" className="text-muted-foreground transition-colors hover:text-primary">
-                    +254 700 000 000
+                  <a href="tel:+254708085761" className="text-muted-foreground transition-colors hover:text-primary">
+                    +254 708 085 761
                   </a>
                 </div>
               </div>
@@ -183,10 +191,10 @@ export function ContactUs({ onNavigate }: ContactUsProps) {
                     Email
                   </h3>
                   <a
-                    href="mailto:info@niarealtors.co.ke"
+                    href="mailto:info@taborrealtors.com"
                     className="text-muted-foreground transition-colors hover:text-primary"
                   >
-                    info@niarealtors.co.ke
+                    info@taborrealtors.com
                   </a>
                 </div>
               </div>
@@ -200,8 +208,8 @@ export function ContactUs({ onNavigate }: ContactUsProps) {
                     Office Hours
                   </h3>
                   <div className="text-muted-foreground">
-                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                    <p>Saturday: 9:00 AM - 3:00 PM</p>
+                    <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                    <p>Saturday: 9:00 AM - 2:00 PM</p>
                     <p>Sunday: Closed</p>
                   </div>
                 </div>
@@ -212,9 +220,19 @@ export function ContactUs({ onNavigate }: ContactUsProps) {
               <h3 className="mb-4" style={{ color: "#0D402D" }}>
                 Find Us
               </h3>
-              <div className="flex h-[300px] items-center justify-center rounded-lg bg-secondary">
-                <p className="text-muted-foreground">Map Location - Westlands, Nairobi</p>
-              </div>
+              <a
+                href="https://maps.app.goo.gl/HV4AsjAcqY8W56V89"
+                target="_blank"
+                rel="noreferrer"
+                className="group block overflow-hidden rounded-lg"
+              >
+                <ImageWithFallback
+                  src="/ABC-Place-Nairobi.jpg"
+                  alt="Map location - ABC Place, Westlands, Nairobi"
+                  className="h-[300px] w-full object-cover transition duration-200 group-hover:brightness-90"
+                />
+                <span className="sr-only">Open map in Google Maps</span>
+              </a>
             </div>
           </div>
         </div>

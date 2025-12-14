@@ -67,7 +67,7 @@ export function TeamProfile({ onNavigate }: TeamProfileProps) {
                 </div>
                 <div className="flex items-center text-muted-foreground">
                   <Linkedin className="mr-3 h-5 w-5 text-primary" />
-                  <a href="#" className="transition-colors hover:text-primary">
+                  <a href="https://www.linkedin.com/company/nia-realtors/" className="transition-colors hover:text-primary">
                     Connect on LinkedIn
                   </a>
                 </div>

@@ -6,4 +6,5 @@ export const locations: Location[] = [
   { region: "Nairobi", area: "Kilimani" },
   { region: "Nairobi", area: "Westlands" },
   { region: "Kiambu", area: "Thika Road" },
+  { region: "Dubai", area: "Dubai" },
 ];

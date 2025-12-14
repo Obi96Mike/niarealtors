@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Menu, X, Facebook, Instagram, Twitter } from "lucide-react";
+import { Search, Menu, X, Facebook, Instagram, Twitter, Linkedin, Music2 } from "lucide-react";
 
 interface HeaderProps {
   onSearchClick: () => void;
@@ -40,7 +40,7 @@ export function Header({ onSearchClick, onAdminClick, isAdmin }: HeaderProps) {
             <div className="flex h-10 w-10 items-center justify-center rounded bg-primary">
               <span className="font-semibold text-white">NR</span>
             </div>
-            <span className="text-xl font-semibold text-[#0D402D]">Nia Realtors</span>
+            <span className="text-xl font-semibold text-[#0D402D]">Tabor Realtors</span>
           </Link>
 
           <nav className="hidden items-center space-x-8 lg:flex">
@@ -91,14 +91,20 @@ export function Header({ onSearchClick, onAdminClick, isAdmin }: HeaderProps) {
               <Search className="h-5 w-5" />
             </button>
             <div className="hidden items-center space-x-3 lg:flex">
-              <a href="https://facebook.com" className="text-foreground transition-colors hover:text-primary" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=61578951969809&rdid=Ncb82fbVg2pO9Ndn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19mWADvSJL%2F#" className="text-foreground transition-colors hover:text-primary" aria-label="Facebook">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="https://instagram.com" className="text-foreground transition-colors hover:text-primary" aria-label="Instagram">
+              <a href="https://www.instagram.com/niahavens" className="text-foreground transition-colors hover:text-primary" aria-label="Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://x.com" className="text-foreground transition-colors hover:text-primary" aria-label="Twitter">
+              <a href="https://x.com/NiaRealtors" className="text-foreground transition-colors hover:text-primary" aria-label="X">
                 <Twitter className="h-5 w-5" />
+              </a>
+              <a href="https://www.linkedin.com/company/nia-realtors/" className="text-foreground transition-colors hover:text-primary" aria-label="LinkedIn">
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a href="https://www.tiktok.com/@niahavens" className="text-foreground transition-colors hover:text-primary" aria-label="TikTok">
+                <Music2 className="h-5 w-5" />
               </a>
             </div>
             <button

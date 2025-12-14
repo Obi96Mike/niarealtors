@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { Bed, Bath, Maximize, Wifi, Car, Shield, ChevronLeft, ChevronRight } from "lucide-react";
+import { countryCallingCodes } from "@/data/countryCodes";
 
 interface SingleRentalProps {
   onNavigate: (page: string, id?: string) => void;
@@ -18,6 +19,10 @@ export function SingleRental({ onNavigate }: SingleRentalProps) {
     moveInDate: "",
     message: "",
   });
+  const sortedCountryCodes = useMemo(
+    () => [...countryCallingCodes].sort((a, b) => a.name.localeCompare(b.name)),
+    [],
+  );
 
   const images = [
     "https://images.unsplash.com/photo-1617341623760-1919df79274c?auto=format&fit=max&w=1600&q=80",
@@ -216,9 +221,11 @@ export function SingleRental({ onNavigate }: SingleRentalProps) {
                         onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
                         className="rounded border border-border bg-input-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                       >
-                        <option value="+254">+254</option>
-                        <option value="+255">+255</option>
-                        <option value="+256">+256</option>
+                        {sortedCountryCodes.map(({ code, name, dialCode }) => (
+                          <option key={`${code}-${dialCode}`} value={dialCode}>
+                            {name} ({dialCode})
+                          </option>
+                        ))}
                       </select>
                       <input
                         id="phone"

@@ -1,6 +1,6 @@
 "use client";
 
-import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin, Music2 } from "lucide-react";
 import Link from "next/link";
 
 interface FooterProps {
@@ -21,16 +21,24 @@ export function Footer({ onNavigate }: FooterProps) {
               <div className="flex h-10 w-10 items-center justify-center rounded bg-white">
                 <span className="font-semibold text-primary">NR</span>
               </div>
-              <span className="text-xl font-semibold">Nia Realtors</span>
+              <span className="text-xl font-semibold">Tabor Realtors</span>
             </div>
             <p className="mb-4 text-white/80">
               Kenya&apos;s premium real estate destination. We connect you with exceptional properties across the nation.
             </p>
             <div className="flex space-x-4">
-              {[Facebook, Instagram, Twitter, Linkedin].map((Icon, idx) => (
+              {[
+                { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61578951969809&rdid=Ncb82fbVg2pO9Ndn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19mWADvSJL%2F#" },
+                { icon: Instagram, href: "https://www.instagram.com/niahavens" },
+                { icon: Twitter, href: "https://x.com/NiaRealtors" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/nia-realtors/" },
+                { icon: Music2, href: "https://www.tiktok.com/@niahavens" },
+              ].map(({ icon: Icon, href }) => (
                 <a
-                  key={idx}
-                  href="#"
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
                 >
                   <Icon className="h-4 w-4" />
@@ -68,21 +76,21 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2">
                 <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0" />
-                <span className="text-white/80">Westlands, Nairobi, Kenya</span>
+                <span className="text-white/80">ABC Place, 4th Floor, Westlands, Nairobi, Kenya</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 flex-shrink-0" />
-                <a href="tel:+254700000000" className="text-white/80 transition-colors hover:text-white">
-                  +254 700 000 000
+                <a href="tel:+254708085761" className="text-white/80 transition-colors hover:text-white">
+                  +254 708 085 761
                 </a>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 flex-shrink-0" />
                 <a
-                  href="mailto:info@niarealtors.co.ke"
+                  href="mailto:info@taborrealtors.com"
                   className="text-white/80 transition-colors hover:text-white"
                 >
-                  info@niarealtors.co.ke
+                  info@taborrealtors.com
                 </a>
               </li>
             </ul>
@@ -108,9 +116,10 @@ export function Footer({ onNavigate }: FooterProps) {
           </div>
         </div>
         <div className="mt-12 border-t border-white/20 pt-8 text-center text-white/60">
-          <p>© {new Date().getFullYear()} Nia Realtors. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Tabor Realtors. All rights reserved.</p>
         </div>
       </div>
     </footer>
   );
 }
+
