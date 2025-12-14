@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, MessageCircle, Music2, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MessageCircle, Music2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { XLogo } from "@/components/icons/XLogo";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -19,7 +20,7 @@ const socials = [
   { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/nia-realtors/" },
   { label: "TikTok", icon: Music2, href: "https://www.tiktok.com/@niahavens" },
   { label: "WhatsApp", icon: MessageCircle, href: "https://wa.me/254708085761" },
-  { label: "X", icon: Twitter, href: "https://x.com/NiaRealtors" },
+  { label: "X", icon: XLogo, href: "https://x.com/NiaRealtors" },
 ];
 
 export default function SiteFooter() {

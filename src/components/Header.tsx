@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Menu, X, Facebook, Instagram, Twitter, Linkedin, Music2 } from "lucide-react";
+import { Search, Menu, X, Facebook, Instagram, Linkedin, Music2 } from "lucide-react";
+import { XLogo } from "@/components/icons/XLogo";
 
 interface HeaderProps {
   onSearchClick: () => void;
@@ -98,7 +99,7 @@ export function Header({ onSearchClick, onAdminClick, isAdmin }: HeaderProps) {
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="https://x.com/NiaRealtors" className="text-foreground transition-colors hover:text-primary" aria-label="X">
-                <Twitter className="h-5 w-5" />
+                <XLogo className="h-5 w-5" />
               </a>
               <a href="https://www.linkedin.com/company/nia-realtors/" className="text-foreground transition-colors hover:text-primary" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />

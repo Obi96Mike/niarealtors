@@ -1,7 +1,8 @@
 "use client";
 
-import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin, Music2 } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Music2 } from "lucide-react";
 import Link from "next/link";
+import { XLogo } from "@/components/icons/XLogo";
 
 interface FooterProps {
   onNavigate?: (page: string) => void;
@@ -30,7 +31,7 @@ export function Footer({ onNavigate }: FooterProps) {
               {[
                 { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61578951969809&rdid=Ncb82fbVg2pO9Ndn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19mWADvSJL%2F#" },
                 { icon: Instagram, href: "https://www.instagram.com/niahavens" },
-                { icon: Twitter, href: "https://x.com/NiaRealtors" },
+                { icon: XLogo, href: "https://x.com/NiaRealtors" },
                 { icon: Linkedin, href: "https://www.linkedin.com/company/nia-realtors/" },
                 { icon: Music2, href: "https://www.tiktok.com/@niahavens" },
               ].map(({ icon: Icon, href }) => (
@@ -122,4 +123,3 @@ export function Footer({ onNavigate }: FooterProps) {
     </footer>
   );
 }
-

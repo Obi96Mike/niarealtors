@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Facebook, Instagram, Twitter, Search as SearchIcon, Linkedin, Music2 } from "lucide-react";
+import { Facebook, Instagram, Search as SearchIcon, Linkedin, Music2 } from "lucide-react";
 import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
 import { Button } from "@/components/ui/button";
 import { SearchOverlay } from "@/components/shared/search-overlay";
+import { XLogo } from "@/components/icons/XLogo";
 
 export default function SiteHeader() {
   const router = useRouter();
@@ -57,7 +58,7 @@ export default function SiteHeader() {
             className="text-text-dark hover:text-brand"
             aria-label="X"
           >
-            <Twitter className="h-5 w-5" />
+            <XLogo className="h-5 w-5" />
           </a>
           <a
             href="https://www.linkedin.com/company/nia-realtors/"

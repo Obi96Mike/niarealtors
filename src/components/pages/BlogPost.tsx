@@ -2,7 +2,8 @@
 
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { BlogCard } from "@/components/BlogCard";
-import { Calendar, Clock, Eye, Share2, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Calendar, Clock, Eye, Share2, Facebook, Linkedin } from "lucide-react";
+import { XLogo } from "@/components/icons/XLogo";
 
 interface BlogPostProps {
   onNavigate: (page: string, id?: string) => void;
@@ -88,7 +89,7 @@ export function BlogPost({ onNavigate }: BlogPostProps) {
               <span className="flex items-center text-sm text-muted-foreground">
                 <Share2 className="mr-2 h-4 w-4" /> Share:
               </span>
-              {[Facebook, Twitter, Linkedin].map((Icon) => (
+              {[Facebook, XLogo, Linkedin].map((Icon) => (
                 <button key={Icon.name} className="text-muted-foreground transition-colors hover:text-primary">
                   <Icon className="h-5 w-5" />
                 </button>
